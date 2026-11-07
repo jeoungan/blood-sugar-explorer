@@ -1,0 +1,9 @@
+node_modules/
+.local/
+.openai/
+*.xlsx
+*.tar.gz
+*.log
+__pycache__/
+qa/
+dist/photos/

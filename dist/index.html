@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="2026년 10월 23일부터 11월 6일까지의 실제 혈당 기록. 하루씩, 전체 날짜, 겹친 하루와 날짜 비교로 살펴봅니다.">
+<title>혈당 자료 탐색 · 내 측정 기록</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<script defer src="cgm-core.js"></script>
+<script defer src="data-personal.js"></script>
+<script defer src="data-schedule.js"></script>
+<script defer src="app.js"></script>
+</head>
+<body>
+<main class="shell">
+  <header class="top">
+    <h1>혈당 자료 탐색</h1>
+    <a class="back" href="https://hsmu-2026-2-site.vercel.app/neuro/cgm" target="_blank" rel="noopener noreferrer">교수님 자료 ↗</a>
+    <p class="lead">뉴로헬스케어 · 혈당 기록</p>
+  </header>
+  <section class="chooser" aria-label="내 측정 기록">
+    <div class="data-row">
+      <p id="data-info" class="data-info"></p>
+      <a class="open-csv" href="blood-sugar-records.csv" download>내 기록 내려받기 ↓</a>
+    </div>
+    <p class="data-description">2026.10.23–11.06 · 한 번의 측정 기록 · 실제 측정한 값만 표시</p>
+  </section>
+  <div class="layout">
+    <section class="panel viewer" id="viewer" aria-label="그래프">
+      <div class="tabs" role="tablist" aria-label="보기 고르기">
+        <button type="button" role="tab" id="tab-day" data-tab="day" aria-controls="view"><span class="wide-only">① </span>하루씩</button>
+        <button type="button" role="tab" id="tab-grid" data-tab="grid" aria-controls="view"><span class="wide-only">② </span><span id="grid-days">15일</span><span class="wide-only"> 한눈에</span></button>
+        <button type="button" role="tab" id="tab-agp" data-tab="agp" aria-controls="view"><span class="wide-only">③ </span>겹친 하루</button>
+        <button type="button" role="tab" id="tab-compare" data-tab="compare" aria-controls="view"><span class="wide-only">④ </span>날짜 비교</button>
+      </div>
+      <div class="window-row">
+        <label for="win-start">시간대</label>
+        <select id="win-start" aria-label="시간대 시작"></select>
+        <span aria-hidden="true">~</span>
+        <select id="win-end" aria-label="시간대 끝"></select>
+        <button type="button" id="win-reset" class="ghost">하루 전체</button>
+        <span id="win-note" class="win-note"></span>
+        <button type="button" id="schedule-toggle" class="ghost toggle" aria-pressed="true" aria-controls="chart-wrap schedule-legend schedule-readout">스케줄 숨기기</button>
+      </div>
+      <div id="view" role="tabpanel">
+        <div id="view-controls"></div>
+        <p id="readout" class="readout" aria-live="polite"></p>
+        <div id="chart-wrap" class="chart-wrap"></div>
+        <div id="schedule-legend" class="schedule-legend" aria-label="활동 색상 범례"></div>
+        <p id="schedule-readout" class="schedule-readout" aria-live="polite"></p>
+        <div id="legend" class="legend"></div>
+        <section id="record-detail" class="record-detail" aria-label="선택한 측정 기록" hidden></section>
+        <details id="records" class="records">
+          <summary>측정 기록 <span id="record-count"></span></summary>
+          <div id="record-table" class="table-scroll"></div>
+        </details>
+      </div>
+    </section>
+    <aside class="side">
+      <section id="summary" class="panel summary" aria-label="선택 요약" aria-live="polite"></section>
+    </aside>
+  </div>
+  <footer class="foot">
+    <p>화면과 탐색 기능 참고: <a href="https://hsmu-2026-2-site.vercel.app/neuro/cgm" target="_blank" rel="noopener noreferrer">교수님 CGM 자료 탐색</a> · 날짜와 혈당값은 원본 엑셀 기준</p>
+  </footer>
+</main>
+<dialog id="photo-dialog" aria-labelledby="photo-title">
+  <div class="photo-head"><h2 id="photo-title">측정 사진</h2><button type="button" class="ghost" id="photo-close" aria-label="사진 닫기">닫기 ✕</button></div>
+  <img id="photo-image" alt="">
+  <p class="hint">사진 속 기기 시계와 기록 시각은 다를 수 있습니다. 날짜·시간은 엑셀 기록 기준입니다.</p>
+</dialog>
+<noscript><p class="empty-msg">그래프를 보려면 브라우저에서 JavaScript를 활성화해 주세요.</p></noscript>
+</body>
+</html>
