@@ -235,3 +235,48 @@ dialog::backdrop{background:rgba(12,33,33,.65)}
 .activity-keys svg{width:14px;height:14px;flex:none}
 .schedule-readout{margin-top:8px;min-height:2.5em;padding:7px 10px;border-left:3px solid #7fa996;border-radius:4px;background:#f1f6f2;color:var(--ink2);font-size:14px;font-weight:600}
 @media(max-width:420px){#schedule-toggle{font-size:13px;padding:5px 8px}.activity-keys{gap:5px 10px}.schedule-readout{font-size:13px}}
+
+/* Keep controls readable and comfortably tappable on narrow phones. */
+.layout>*,.viewer,.side,.chart-wrap{min-width:0}
+@media(max-width:599px){
+  .shell{padding:12px 10px 24px}
+  .panel{padding:12px}
+  .top{column-gap:8px}
+  .top h1{font-size:clamp(22px,6vw,26px)}
+  .back{font-size:13px}
+  .lead{font-size:14px;margin-top:3px}
+  .tabs{gap:4px}
+  .tabs button{min-height:48px;font-size:13px;padding:6px 3px}
+  .chips{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+  .chips .chip{min-height:54px}
+  .ghost,.open-csv,.window-row select,.compare-controls select{min-height:44px}
+  .window-row{display:grid;grid-template-columns:max-content minmax(0,1fr) max-content minmax(0,1fr);gap:8px;padding:10px}
+  .window-row>label{grid-column:1;font-size:14px}
+  #win-start{grid-column:2;grid-row:1;width:100%;font-size:16px}
+  .window-row>span[aria-hidden]{grid-column:3;grid-row:1}
+  #win-end{grid-column:4;grid-row:1;width:100%;font-size:16px}
+  #win-reset{grid-column:1/3;font-size:13px}
+  #win-note{grid-column:3/5;font-size:12px}
+  #win-note:empty{display:none}
+  #schedule-toggle{grid-column:1/-1;width:100%;margin-left:0;font-size:14px}
+  .view-head{gap:8px}
+  .view-head .title{font-size:17px}
+  .view-head .ghost{padding:6px 10px;font-size:14px}
+  .compare-controls{display:grid;grid-template-columns:minmax(0,1fr) 20px minmax(0,1fr);gap:6px}
+  .compare-controls label[for=compare-a]{grid-column:1;grid-row:1}
+  .compare-controls label[for=compare-b]{grid-column:3;grid-row:1}
+  #compare-a{grid-column:1;grid-row:2;min-width:0;width:100%;font-size:16px}
+  .compare-controls>span{grid-column:2;grid-row:2;text-align:center}
+  #compare-b{grid-column:3;grid-row:2;min-width:0;width:100%;font-size:16px}
+  #compare-swap{grid-column:1/-1;grid-row:3;margin:2px 0 0;width:100%;font-size:14px}
+  .cmp{font-size:14px;table-layout:fixed}
+  .cmp th,.cmp td{padding:7px 4px;overflow-wrap:anywhere}
+  .cmp thead th{font-size:14px}
+  .cmp tbody th{font-size:13px}
+  .cmp td small{font-size:12px}
+  .stats dd{font-size:17px}
+  .record-link,.photo-link{min-height:44px}
+  .table-scroll{-webkit-overflow-scrolling:touch}
+  .schedule-legend{padding:9px}
+  .schedule-legend p{font-size:12px}
+}

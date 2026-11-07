@@ -30,4 +30,6 @@ Python의 `openpyxl`이 있는 환경에서 `python scripts/import_workbook.py <
 
 ## 참고
 
+보고서에 사용한 관측 통계와 그래프는 `analysis/report_analysis.py`로 재현할 수 있습니다. `openpyxl`과 `matplotlib`을 설치한 환경에서 `python analysis/report_analysis.py --input <혈당 엑셀 경로> --output report-data`를 실행합니다. 원본 엑셀과 분석 결과는 공개 저장소에 포함하지 않습니다.
+
 [교수님 CGM 자료 탐색](https://hsmu-2026-2-site.vercel.app/neuro/cgm)의 화면 구성, CSS, 그래프 및 통계 로직을 개인 기록에 맞게 수정했습니다.
